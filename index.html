@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1020">
+  <meta name="description" content="AudioDrop — a clean, ad-free audio converter for files you own or have permission to use.">
+  <title>AudioDrop — Free Audio Converter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#"><span class="logo">♫</span> Audio<span>Drop</span></a>
+    <div class="nav-right"><span class="adfree"><i></i> Ad-free · No account</span><a href="#how" class="nav-link">How it works</a></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="pill"><span>✦</span> SIMPLE. PRIVATE. FREE.</div>
+      <h1>Your audio.<br><span>Your format.</span></h1>
+      <p class="lead">Convert audio you’re allowed to use into MP3. No ads, no clutter, no account required.</p>
+      <div class="trust-row"><span>✓ Works in your browser</span><span>✓ No account</span><span>✓ You control your files</span></div>
+    </section>
+
+    <section class="converter panel" aria-labelledby="convert-title">
+      <div class="panel-head">
+        <div><div class="eyebrow">AUDIO WORKSPACE</div><h2 id="convert-title">Convert to MP3</h2></div>
+        <div class="music-icon">♫</div>
+      </div>
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Choose or drop an audio or video file">
+        <div class="upload-icon">↑</div>
+        <h3>Drop your file here</h3>
+        <p>or <button id="chooseBtn" class="inline-button" type="button">browse files</button></p>
+        <span class="small">Audio and video files supported by your browser</span>
+        <input id="fileInput" type="file" accept="audio/*,video/*,.mp4,.mov,.webm,.m4a,.wav,.mp3,.ogg,.aac,.flac" hidden>
+      </div>
+      <div id="fileDetails" class="file-details" hidden>
+        <div class="file-symbol">♫</div>
+        <div class="file-info"><strong id="fileName">filename</strong><span id="fileMeta">File information</span></div>
+        <button id="removeFile" class="icon-button" aria-label="Remove selected file" type="button">×</button>
+      </div>
+
+      <div class="settings">
+        <div class="field">
+          <label for="quality">MP3 quality</label>
+          <select id="quality">
+            <option value="128">128 kbps · Smaller file</option>
+            <option value="192" selected>192 kbps · Recommended</option>
+            <option value="256">256 kbps · High quality</option>
+            <option value="320">320 kbps · Maximum MP3 bitrate</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="sourceUrl">Or use a direct media-file URL</label>
+          <input id="sourceUrl" type="url" placeholder="https://example.com/audio-file.wav" autocomplete="url">
+          <p class="hint">Use a direct link to a downloadable media file that you own or are permitted to use. Social media page links are not direct media URLs.</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="convertBtn" class="primary-button" type="button"><span>♫</span> Convert to MP3</button>
+        <button id="downloadSourceBtn" class="secondary-button" type="button">Download direct file</button>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite">Choose a file to get started.</div>
+      <div class="progress-wrap" id="progressWrap" hidden><div class="progress-track"><div id="progressBar"></div></div><span id="progressText">Preparing…</span></div>
+      <div class="legal-note">Only convert or download content you own, have permission to use, or that is legally offered for download. This tool does not bypass platform restrictions.</div>
+    </section>
+
+    <section id="how" class="how">
+      <div class="eyebrow">MADE TO BE SIMPLE</div>
+      <h2>Three steps. No distractions.</h2>
+      <div class="steps">
+        <article><div class="step-no">01</div><h3>Choose audio</h3><p>Upload a compatible audio or video file from your device.</p></article>
+        <article><div class="step-no">02</div><h3>Pick your quality</h3><p>Choose an MP3 bitrate based on your size and quality needs.</p></article>
+        <article><div class="step-no">03</div><h3>Save your MP3</h3><p>Convert in your browser and download the resulting file.</p></article>
+      </div>
+    </section>
+
+    <section class="faq panel">
+      <h2>Good to know</h2>
+      <details><summary>Can I paste a YouTube or Instagram link?</summary><p>This static version does not extract audio from social-media pages. Use the platform’s official download options or a creator-provided download link, where available. Direct media-file links may work if the server permits browser access.</p></details>
+      <details><summary>Is 320 kbps always better?</summary><p>It creates a larger MP3, but it cannot restore detail that is absent from the source. Choose a quality that fits the original recording and your needs.</p></details>
+      <details><summary>Are my files uploaded to a server?</summary><p>Local file conversion is designed to run in your browser. Direct URL downloads are fetched by your browser and may fail if the source blocks cross-origin access (CORS).</p></details>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="logo">♫</span> Audio<span>Drop</span></a><p>Free to use · No ads · No account</p><small>Use responsibly and respect creators’ rights and platform terms.</small></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
